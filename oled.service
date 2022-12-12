@@ -1,0 +1,14 @@
+[Unit]
+Description=OLED Startup/Shutdown Service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/home/pi/config/startup.py
+ExecStop=/home/pi/config/shutdown.py
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
+
