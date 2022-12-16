@@ -1,11 +1,16 @@
 [Unit]
 Description=OLED Startup/Shutdown Service
+DefaultDependencies=no
+Requires=dev-i2c\x2d1.device
+After=dev-i2c\x2d1.device
+Before=shutdown.target
+Conflicts=shutdown.target
 
 [Service]
 Type=oneshot
 RemainAfterExit=true
 ExecStart=/home/pi/config/startup.py
-ExecStop=/home/pi/config/shutdown.py
+ExecStopPost=/home/pi/config/shutdown.py
 User=pi
 Group=pi
 
